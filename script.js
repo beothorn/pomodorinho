@@ -4,8 +4,6 @@ var timeStr = function(time){
    return "" + time;
 }
 
-document.getElementById("alphasvg").contentDocument.getElementById("path4365").style.transform="90deg";
-
 var startTime = 0;
 var intervalId = -1;
 var timePassed = 0;
