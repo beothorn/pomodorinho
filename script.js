@@ -4,15 +4,18 @@ var timeStr = function(time){
    return "" + time;
 }
 
+document.getElementById("alphasvg").contentDocument.getElementById("path4365").style.transform="90deg";
+
 var startTime = 0;
 var intervalId = -1;
+var timePassed = 0;
 document.getElementById("timer-state").addEventListener("click", function(){
-    if(document.getElementById("timer-state").textContent === "Start"){
-       if(startTime === 0){
-   document.getElementById("foo").classList.add('jello-horizontal');
-           document.getElementById("timer-state").textContent = "Stop";
-           startTime = new Date().getTime() - ((1000 * 60 * 60 * 100) - 3000);
-       }
+    if(document.getElementById("timer-state").textContent === "Start"){ 
+      
+        document.getElementById("foo").classList.add('jello-horizontal');
+        document.getElementById("timer-state").textContent = "Stop";
+        startTime = new Date().getTime() - timePassed;
+       
        intervalId = setInterval(function(){
            var now = new Date().getTime();
            var timePassedInSeconds = Math.floor( (now - startTime) / 1000 );
@@ -25,6 +28,7 @@ document.getElementById("timer-state").addEventListener("click", function(){
         return;
     }
     if(document.getElementById("timer-state").textContent === "Stop"){
+        timePassed = new Date().getTime() - startTime;
         document.getElementById("timer-state").textContent = "Start";
         clearInterval(intervalId);
         return;
